@@ -1,0 +1,111 @@
+{"questions": [
+	{"questionNumber" : 1,
+		"questionText" : "What color is the sky?",
+		"possibleAnswers": [
+			"Red",
+			"Green",
+			"Yellow",
+			"Blue"
+		],
+		"correctAnswer": 4
+	},
+	{"questionNumber" : 2,
+		"questionText" : "Earth is the what planet of the solar system?",
+		"possibleAnswers": [
+			{"answer1": "First",
+				"answer2": "20th",
+				"answer3": "Third",
+				"answer4": "Only"
+			}
+		],
+		"correctAnswer": 3
+	},
+	{"questionNumber" : 3,
+		"questionText" : "You are viewing this on a type of computer",
+		"possibleAnswers": [
+			{"answer1": "True",
+				"answer2": "False",
+				"answer3": "",
+				"answer4": ""
+			}
+		],
+		"correctAnswer": 1
+	},
+	{"questionNumber" : 4,
+		"questionText" : "Which of these is NOT one of the SEVEN dwarves in Snow White?",
+		"possibleAnswers": [
+			{"answer1": "Silly",
+				"answer2": "Grumpy",
+				"answer3": "Doc",
+				"answer4": "Sneezy"
+			}
+		],
+		"correctAnswer": 1
+	},
+	{"questionNumber" : 5,
+		"questionText" : "What is the minimum number of wheels a CAR should have?",
+		"possibleAnswers": [
+			{"answer1": "1",
+				"answer2": "2",
+				"answer3": "3",
+				"answer4": "4"
+			}
+		],
+		"correctAnswer": 4
+	},
+	{"questionNumber" : 6,
+		"questionText" : "Fill in the blank: Ice tends to be ______.",
+		"possibleAnswers": [
+			{"answer1": "Cold",
+				"answer2": "squisy",
+				"answer3": "cold",
+				"answer4": "burning"
+			}
+		],
+		"correctAnswer": 3
+	},
+	{"questionNumber" : 7,
+		"questionText" : "Fill in the blank: And I would have gotten away with it too, if it weren't for you ______ !",
+		"possibleAnswers": [
+			{"answer1": "meddling kids",
+				"answer2": "stinky kids",
+				"answer3": "barking dogs",
+				"answer4": "quacking cats"
+			}
+		],
+		"correctAnswer": 1
+	},
+	{"questionNumber" : 8,
+		"questionText" : "Which of these was NOT a Warner Bros from Animaniacs?",
+		"possibleAnswers": [
+			{"answer1": "Wakko",
+				"answer2": "Dot",
+				"answer3": "Hello Nurse",
+				"answer4": "Yakko"
+			}
+		],
+		"correctAnswer": 3
+	},
+	{"questionNumber" : 9,
+		"questionText" : "Mickey from Disney is a ____?",
+		"possibleAnswers": [
+			{"answer1": "abberation",
+				"answer2": "mouse",
+				"answer3": "house",
+				"answer4": "louse"
+			}
+		],
+		"correctAnswer": 2
+	},
+	{"questionNumber" : 10,
+		"questionText" : "JavaScript is fun!",
+		"possibleAnswers": [
+			{"answer1": "True",
+				"answer2": "False",
+				"answer3": "",
+				"answer4": ""
+			}
+		],
+		"correctAnswer": 1
+	}
+]}
