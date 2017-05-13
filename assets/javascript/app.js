@@ -2,19 +2,53 @@ $(document).ready(function(){
 	//Initialize screen by hiding timer and question containers
 //	$("#timerContainer").toggle();
 //	$("#questionContainer").toggle();
+	var questionNumber = 0;
+	var score = 0;
 
 	//Start Game
 	$("#startGame").on("click", function(){
 		startGame();
 	})
+
+	//Select Answer
+	$(".answerListContainer").on("click", function(){
+		var answerSelected = $(this).children().attr("data-answer");
+		var correctAnswer = $("#hiddenAnswer").val();
+		console.log(answerSelected)
+		console.log(correctAnswer)
+
+		if (correctAnswer == answerSelected){
+			questionNumber++;
+			score++;
+			$("#score").html(score);
+
+			console.log("correct")
+			//answer is correct
+
+			//clear questions
+			$("#question").empty();
+			//clear answers
+			$(".answerListContainer").empty();
+
+			//show next question
+			displayQuestion(questionNumber);
+			startGame();
+
+		}
+		else {
+			console.log("incorrect")
+		}
+	})
 })
 
 function startGame(){
+	var questions;
 	//Start countdown
 	countDown("start", 3);
+
 	setTimeout(function(){
 		countDown("stop");
-		displayQuestion();
+		displayQuestion(0);
 		countDown("start", 10);
 		setTimeout(function(){
 			countDown("stop");
@@ -42,33 +76,49 @@ function countDown(option, countdownTime) {
 	}
 
 	if (option == "start") {
+		if (intervalId === undefined) {
+			timer.stop();
+		}
 		timer.start(countdownTime);
 	}
 	else if (option == "stop") {
 		timer.stop();
+		console.log("time up");
 	}
 }
 
-function displayQuestion() {
+function displayQuestion(questionNumber) {
 	//Get Question
+	var questionNumber = questionNumber;
 	$.ajax({
 		type: "GET",
-		url: "assets/javascript/questions.json",
-		success: function(response){
-			myQuestion = response;
-			var questionText = myQuestion.questions[0].questionText;
-
-			$("#questionContainer").toggle();
-			$("#answersContainer").toggle();
-			$("#question").text(questionText);
-
-			for (var i = 0; i < myQuestion.questions[0].possibleAnswers.length; i++){
-				$("#answersList").append("<li>" + myQuestion.questions[0].possibleAnswers[i] + "</li>");
-			}
-		},
-		error: function(error) {
-			console.log(error)
+		url: "assets/javascript/questions.json"
+	}).done(function(response){
+		console.log("in AJAX = ", questionNumber)
+		myQuestion = response;
+		var questionText = myQuestion.questions[questionNumber].questionText;
+		console.log(questionText)
+		if ($("#questionContainer").not(":visible")) {
+			$("#questionContainer").show();
 		}
+		if ($("#answersContainer").not(":visible")) {
+			$("#answersContainer").toggle();
+		}
+
+		$("#question").text(questionText);
+
+		for (var i = 0; i < myQuestion.questions[questionNumber].possibleAnswers.length; i++){
+			var j = i+1;
+			var answerList = $("#al" + j);
+			answerItem = $("<li>" + myQuestion.questions[questionNumber].possibleAnswers[i] + "</li>");
+			answerItem.attr("data-answer", i+1);
+			answerItem.addClass("answers");
+			answerList.append(answerItem)
+		}
+
+		//Save answer to input element
+		var correctAnswer = myQuestion.questions[questionNumber].correctAnswer
+		$("#hiddenAnswer").val(correctAnswer);
 	});
 }
 
@@ -93,7 +143,7 @@ var stopwatch = {
 	count: function() {
 		stopwatch.time++;
 		var currentTime = stopwatch.timeConverter(stopwatch.time)
-		console.log(currentTime)
+//		console.log(currentTime)
 		$("#display").html(currentTime)
 	},
 	timeConverter: function(t) {
