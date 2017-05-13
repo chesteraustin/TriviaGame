@@ -20,6 +20,8 @@ $(document).ready(function(){
 		if (correctAnswer == answerSelected){
 			questionNumber++;
 			score++;
+//			countDown("stop");
+
 			$("#score").html(score);
 
 			console.log("correct")
@@ -72,13 +74,13 @@ function countDown(option, countdownTime) {
 			timer.time--;
 			console.log(timer.time);
 			$("#timer").text(timer.time)
+			if (timer.time == 0) {
+				clearInterval(intervalId);			
+			}
 		}
 	}
 
 	if (option == "start") {
-		if (intervalId === undefined) {
-			timer.stop();
-		}
 		timer.start(countdownTime);
 	}
 	else if (option == "stop") {
